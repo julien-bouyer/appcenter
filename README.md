@@ -55,3 +55,15 @@ Démarrage d'un container mongo
 docker run --name mongodock -p 27017:27017 -i -t -d mongo
 ```
 
+## Couleurs 
+
+bleu foncé : #24478f
+
+bleu : #46d2eb
+
+bleu clair : #ccf7ff
+
+## Police 
+
+Teko
+
