@@ -5,67 +5,32 @@
 </template>
 
 <style lang="scss">
-// Déclaration de la police Teko
-@font-face {
-  font-family: "Teko";
-  src: local("Teko"),
-   url(./assets/fonts/Teko/Teko-Light.ttf) format("truetype");
-    font-weight: 100;
-    font-style: normal;
-}
-@font-face {
-  font-family: "Teko";
-  src: local("Teko"),
-   url(./assets/fonts/Teko/Teko-Regular.ttf) format("truetype");
-    font-weight: 400;
-    font-style: normal;
-}
-@font-face {
-  font-family: "Teko";
-  src: local("Teko"),
-   url(./assets/fonts/Teko/Teko-Medium.ttf) format("truetype");
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-  font-family: "Teko";
-  src: local("Teko"),
-   url(./assets/fonts/Teko/Teko-SemiBold.ttf) format("truetype");
-    font-weight: 600;
-    font-style: normal;
-}
-@font-face {
-  font-family: "Teko";
-  src: local("Teko"),
-   url(./assets/fonts/Teko/Teko-Bold.ttf) format("truetype");
-    font-weight: 700;
-    font-style: normal;
-}
+@import "@/assets/scss/styles.scss";
 
 // Styles généraux de l'app
 body {
-  background-color: rgb(31 140 67 / .2);
-  margin: 0;
-  padding: 0;
+    background-color: rgb(31 140 67 / .2);
+    margin: 0;
+    padding: 0;
 }
 #app {
-  -moz-osx-font-smoothing: grayscale;
-  color: #3a3a3a;
+    -moz-osx-font-smoothing: grayscale;
+    color: #3a3a3a;
 
-  .title {
-    font-family: Tika;
-  }
+    .title {
+        font-family: Tika;
+    }
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 ul li::before {
-  content: "\200B";
+    content: "\200B";
 }
 
 a {
-  color: #0f3321;
+    color: #0f3321;
 }
 </style>

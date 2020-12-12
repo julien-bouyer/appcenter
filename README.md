@@ -55,6 +55,9 @@ Démarrage d'un container mongo
 docker run --name mongodock -p 27017:27017 -i -t -d mongo
 ```
 
+http://pierrepironin.github.io/docker-et-mongodb/
+https://hub.docker.com/_/mongo/
+
 ## Couleurs 
 
 bleu foncé : #24478f
