@@ -53,7 +53,8 @@ export default {
     }
     .app-title {
       font-size: 2rem;
-    line-height: 2rem;
+      line-height: 2rem;
+      margin-left: .8rem;
     }
   }
 }

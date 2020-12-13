@@ -2,7 +2,7 @@
   <div class="container">
     <form @submit.prevent="loginUser">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header bg-dark">
           <app-title></app-title>
         </div>
         <div class="card-body">
@@ -63,7 +63,6 @@ export default {
   width: 40rem;
 
   .card-header {
-    background-color: #24478f;
     padding: 1.25rem;
   }
 }
