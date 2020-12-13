@@ -1,13 +1,14 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import Login from '@/components/auth/login.vue'
 
-describe('HelloWorld.vue', () => {
+describe('login.vue', () => {
   it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
+    const login = {};
+    login.email = 'user1@test.fr'
+    const wrapper = shallowMount(Login, {
+      propsData: { login }
     })
-    expect(wrapper.text()).to.include(msg)
+    expect(wrapper.text()).to.include(login.email)
   })
 })
