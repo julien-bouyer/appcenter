@@ -2,7 +2,7 @@
   <div>
     <navbar></navbar>
     <section>
-      <div class="container">
+      <div class="container mt-5">
         <router-view></router-view>
       </div>
     </section>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import navbar from "@/components/common/navbar";
+import navbar from '@/components/common/navbar';
 export default {
   components: {
     navbar

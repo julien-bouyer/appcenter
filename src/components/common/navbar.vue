@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <router-link to="/" class="no-decoration">
+        <app-title size="small"></app-title>
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -25,12 +27,23 @@
 </template>
 
 <script>
+import AppTitle from "@/components/common/app-title.vue";
+
 export default {
+  components: {
+    "app-title": AppTitle,
+  },
   methods: {
     logUserOut() {
-      localStorage.removeItem('jwt');
-      this.$router.push({ name: 'login' });
+      localStorage.removeItem("jwt");
+      this.$router.push({ name: "login" });
     },
   },
 };
 </script>
+
+<style scoped lang="scss">
+.no-decoration {
+  text-decoration: none;
+}
+</style>
