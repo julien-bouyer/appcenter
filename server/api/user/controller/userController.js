@@ -39,3 +39,28 @@ exports.loginUser = async (req, res) => {
 exports.getUserDetails = async (req, res) => {
   await res.json(req.userData);
 };
+
+exports.find = async (req, res) => {
+  try {
+    let data;
+    if (req.params.id) {
+      data = await User.find({
+        _id: req.params.id,
+      });
+    } else {
+      data = await User.find();
+    }
+    if (!data) {
+      return res.status(401).json({
+        error: 'error',
+      });
+    }
+    res.status(201).json({
+      data,
+    });
+  } catch (err) {
+    res.status(400).json({
+      err: err,
+    });
+  }
+};
