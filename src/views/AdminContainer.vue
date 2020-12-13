@@ -2,7 +2,9 @@
   <div>
     <navbar></navbar>
     <section>
-      <router-view></router-view>
+      <div class="container">
+        <router-view></router-view>
+      </div>
     </section>
   </div>
 </template>

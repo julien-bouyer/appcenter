@@ -1,29 +1,31 @@
 <template>
-  <div class="login">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3 col-sm-10 offset-sm-1">
-          <form class="text-center border border-primary p-5" @submit.prevent="loginUser">
-            <input type="text" id="email" class="form-control mb-5" placeholder="Email" v-model="login.email" />
-            <!-- Password -->
-            <input type="password" id="password" class="form-control mb-5" placeholder="Password" v-model="login.password" />
-            <!-- Sign in button -->
-            <center>
-              <button class="btn btn-primary btn-block w-75 my-4" type="submit">
-                Sign in
-              </button>
-            </center>
-          </form>
+  <div class="container">
+    <form @submit.prevent="loginUser">
+      <div class="card">
+        <div class="card-header">
+          <img src="@/assets/images/logo.png" class="logo" />
+          <h1 class="app-title">App center</h1>
+        </div>
+        <div class="card-body">
+          <input-email v-model="login.email"></input-email>
+          <input-password v-model="login.password"></input-password>
+          <button type="submit" class="btn btn-primary">Sign in</button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
 <script>
 import swal from 'sweetalert';
+import InputEmail from '@/components/form/input-email.vue';
+import InputPassword from '@/components/form/input-password.vue';
 
 export default {
+  components: {
+    'input-email': InputEmail,
+    'input-password': InputPassword
+  },
   data() {
     return {
       login: {
@@ -49,3 +51,34 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.container {
+  padding: 3rem;
+}
+
+.card {
+  margin: 0 auto;
+  width: 40rem;
+
+  .card-header {
+    align-items: center;
+    background-color: #24478f;
+    color: #fff;
+    display: flex;
+
+    .logo {
+      height: 5rem;
+      width: 5rem;
+    }
+
+    .app-title {
+      display: inline-block;
+      font-family: Teko;
+      font-size: 5rem;
+      margin-bottom: 0;
+      margin-left: 1.25rem;
+    }
+  }
+}
+</style>
