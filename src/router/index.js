@@ -2,47 +2,57 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 
+import userRouter from '@/router/user.js'
+const Login = () => import('@/views/Login.vue')
+const AdminContainer = () => import('@/views/AdminContainer.vue')
+
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/home',
-    name: 'home',
-    component: Home,
-    meta: {
-      requiresAuth: true
+    {
+        path: '/login',
+        name: 'login',
+        component: Login
+    },
+    {
+        path: '/',
+        name: 'admin',
+        component: AdminContainer,
+        meta: {
+            requiresAuth: true
+        },
+        children: [
+            {
+                path: '',
+                name: 'home',
+                component: Home,
+                meta: {
+                    requiresAuth: true
+                }
+            },
+            ...userRouter
+        ]
     }
-  },
-  {
-    path: '/',
-    name: 'login',
-    component: () => import('@/views/Login.vue')
-  },
-  {
-    path: '/register',
-    name: 'register',
-    component: () => import('@/views/Register.vue')
-  }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (localStorage.getItem('jwt') == null) {
-      next({
-        path: '/'
-      });
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (localStorage.getItem('jwt') == null) {
+            next({
+                name: 'login'
+            });
+        } else {
+            next()
+        }
     } else {
-      next();
+        next()
     }
-  } else {
-    next();
-  }
 })
 
 export default router
