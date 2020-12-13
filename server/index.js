@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 //configure body-parser ends here
 app.use(morgan('dev')); // configire morgan
 // define first route
-app.get('/', (req, res) => {
+app.get('/', () => {
     console.log('Hello MEVN Soldier');
 });
 const userRoutes = require('./api/user/route/user'); //bring in our user routes
