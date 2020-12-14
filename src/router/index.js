@@ -1,58 +1,58 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '@/views/Home.vue';
 
-import userRouter from '@/router/user.js'
-const Login = () => import('@/views/Login.vue')
-const AdminContainer = () => import('@/views/AdminContainer.vue')
+import userRouter from '@/router/user.js';
+const Login = () => import('@/views/Login.vue');
+const AdminContainer = () => import('@/views/AdminContainer.vue');
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
-    {
-        path: '/login',
-        name: 'login',
-        component: Login
+  {
+    path: '/login',
+    name: 'login',
+    component: Login,
+  },
+  {
+    path: '/',
+    name: 'admin',
+    component: AdminContainer,
+    meta: {
+      requiresAuth: true,
     },
-    {
-        path: '/',
-        name: 'admin',
-        component: AdminContainer,
+    children: [
+      {
+        path: '',
+        name: 'home',
+        component: Home,
         meta: {
-            requiresAuth: true
+          requiresAuth: true,
         },
-        children: [
-            {
-                path: '',
-                name: 'home',
-                component: Home,
-                meta: {
-                    requiresAuth: true
-                }
-            },
-            ...userRouter
-        ]
-    }
-]
+      },
+      ...userRouter,
+    ],
+  },
+];
 
 const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes
-})
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes,
+});
 
 router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (localStorage.getItem('jwt') == null) {
-            next({
-                name: 'login'
-            });
-        } else {
-            next()
-        }
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (localStorage.getItem('jwt') == null) {
+      next({
+        name: 'login',
+      });
     } else {
-        next()
+      next();
     }
-})
+  } else {
+    next();
+  }
+});
 
-export default router
+export default router;

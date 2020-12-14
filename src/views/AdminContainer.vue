@@ -13,7 +13,7 @@
 import navbar from '@/components/common/navbar';
 export default {
   components: {
-    navbar
-  }
+    navbar,
+  },
 };
 </script>

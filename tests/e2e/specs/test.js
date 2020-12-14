@@ -2,7 +2,7 @@
 
 describe('My First Test', () => {
   it('Visits the app root url', () => {
-    cy.visit('/')
-    cy.contains('p', 'Dont have an account')
-  })
-})
+    cy.visit('/');
+    cy.contains('p', 'Dont have an account');
+  });
+});

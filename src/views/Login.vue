@@ -25,7 +25,7 @@ export default {
   components: {
     'input-email': InputEmail,
     'input-password': InputPassword,
-    'app-title': AppTitle
+    'app-title': AppTitle,
   },
   data() {
     return {

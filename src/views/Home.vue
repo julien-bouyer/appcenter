@@ -47,7 +47,7 @@ export default {
 
 <style scoped lang="scss">
 h2.welcome {
-  font-family: "Teko";
+  font-family: 'Teko';
   font-weight: 200;
 }
 .list-group-flush {

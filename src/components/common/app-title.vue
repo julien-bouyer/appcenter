@@ -21,7 +21,7 @@ export default {
         name += ' small';
       }
       return name;
-    }
+    },
   },
 };
 </script>
@@ -54,7 +54,7 @@ export default {
     .app-title {
       font-size: 2rem;
       line-height: 2rem;
-      margin-left: .8rem;
+      margin-left: 0.8rem;
     }
   }
 }

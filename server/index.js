@@ -9,13 +9,13 @@ const app = express();
 //configure database and mongoose
 mongoose.set('useCreateIndex', true);
 mongoose
-    .connect(config.database, { useNewUrlParser: true })
-    .then(() => {
-        console.log('Database is connected');
-    })
-    .catch(err => {
-        console.log({ database_error: err });
-    });
+  .connect(config.database, { useNewUrlParser: true })
+  .then(() => {
+    console.log('Database is connected');
+  })
+  .catch((err) => {
+    console.log({ database_error: err });
+  });
 // db configuaration ends here
 //registering cors
 app.use(cors());
@@ -26,10 +26,10 @@ app.use(bodyParser.json());
 app.use(morgan('dev')); // configire morgan
 // define first route
 app.get('/', () => {
-    console.log('Hello MEVN Soldier');
+  console.log('Hello MEVN Soldier');
 });
 const userRoutes = require('./api/user/route/user'); //bring in our user routes
 app.use('/user', userRoutes);
 app.listen(PORT, () => {
-    console.log(`App is running on ${PORT}`);
+  console.log(`App is running on ${PORT}`);
 });
