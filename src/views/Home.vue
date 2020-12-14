@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="welcome">Welcome</h2>
+    <h2 class="welcome">Welcome in App Center</h2>
     <div class="row">
       <div class="col-md-12">
         <ul class="list-group">
@@ -17,6 +17,9 @@
           </li>
           <li class="list-group-item">
             <router-link to="/register">Register</router-link>
+          </li>
+          <li class="list-group-item">
+            <router-link to="/files">Files</router-link>
           </li>
         </ul>
       </div>

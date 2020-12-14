@@ -1,12 +1,12 @@
 <template>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input class="form-control" type="password" id="password" placeholder="Password" v-bind:value="password" v-on:input="$emit('input', $event.target.value)" />
-  </div>
+    <input-text type="password" label="Password" placeholder="Password" :value="password" v-on:input="$emit('input', $event)"></input-text>
 </template>
 
 <script>
+import InputText from './input-text.vue';
+
 export default {
+  components: { InputText },
   name: 'input-password',
   props: ['password'],
 };
