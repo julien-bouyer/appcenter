@@ -70,3 +70,7 @@ bleu clair : #ccf7ff
 
 Teko
 
+## Thanks to
+
+https://codesource.io/setting-up-vue-authentication-using-expressjs-mongodb-and-jwt/
+
