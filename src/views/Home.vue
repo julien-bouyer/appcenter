@@ -9,6 +9,18 @@
         </ul>
       </div>
     </div>
+    <div class="row mt-md-3">
+      <div class="col-md-12">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <router-link to="/users">Users list</router-link>
+          </li>
+          <li class="list-group-item">
+            <router-link to="/register">Register</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,9 +45,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 h2.welcome {
   font-family: "Teko";
   font-weight: 200;
+}
+.list-group-flush {
+  .list-group-item {
+    background: none;
+  }
 }
 </style>
