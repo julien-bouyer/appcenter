@@ -46,7 +46,6 @@ export default {
         }
       } catch (err) {
         swal('Error', 'Something Went Wrong', 'error');
-        console.log(err.response);
       }
     },
   },

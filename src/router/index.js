@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import Home from '@/views/Home.vue';
 
 import userRouter from '@/router/user.js';
+import fileRouter from '@/router/file.js';
+
 const Login = () => import('@/views/Login.vue');
 const AdminContainer = () => import('@/views/AdminContainer.vue');
 
@@ -31,6 +33,7 @@ const routes = [
         },
       },
       ...userRouter,
+      ...fileRouter,
     ],
   },
 ];
