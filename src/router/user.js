@@ -1,4 +1,5 @@
 const UserList = () => import('@/views/user/UserList.vue');
+const UserForm = () => import('@/views/user/UserForm.vue');
 
 const userRouter = [
   {
@@ -10,9 +11,9 @@ const userRouter = [
     },
   },
   {
-    path: 'register',
-    name: 'register',
-    component: () => import('@/views/user/Register.vue'),
+    path: 'user/:id?',
+    name: 'UserForm',
+    component: UserForm,
     meta: {
       requiresAuth: true,
     },
