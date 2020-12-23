@@ -1,21 +1,54 @@
 const User = require('../model/User');
 
-exports.registerNewUser = async (req, res) => {
+exports.find = async (req, res) => {
   try {
-    let isUser = await User.find({ email: req.body.email });
-    if (isUser.length >= 1) {
-      return res.status(409).json({
-        message: 'email already in use',
+    let data;
+    if (req.params.id) {
+      data = await User.findOne({
+        _id: req.params.id,
+      });
+    } else {
+      data = await User.find();
+    }
+    if (!data) {
+      return res.status(401).json({
+        error: 'No user found',
       });
     }
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-    });
+    res.status(201).json({ data });
+  } catch (err) {
+    res.status(400).json({ err });
+  }
+};
+
+exports.save = async (req, res) => {
+  try {
+    let user;
+    if (req.params.id) {
+      user = await User.findById(req.params.id);
+      if (!user) {
+        return res.status(404).json({
+          message: `user not found for id [${req.params.id}]`,
+        });
+      }
+    } else {
+      let isUser = await User.find({ email: req.body.email });
+      if (isUser.length >= 1) {
+        return res.status(409).json({
+          message: 'email already in use',
+        });
+      }
+    }
+    if (!user) {
+      user = new User();
+    }
+    user.name = req.body.name;
+    user.email = req.body.email;
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
     let data = await user.save();
-    const token = await user.generateAuthToken(); // here it is calling the method that we created in the model
-    res.status(201).json({ data, token });
+    res.status(201).json({ data });
   } catch (err) {
     res.status(400).json({ err: err });
   }
@@ -34,8 +67,4 @@ exports.loginUser = async (req, res) => {
   } catch (err) {
     res.status(400).json({ err: err });
   }
-};
-
-exports.getUserDetails = async (req, res) => {
-  await res.json(req.userData);
 };
