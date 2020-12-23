@@ -27,6 +27,11 @@ exports.save = async (req, res) => {
     if (req.params.id) {
       file = await File.findById(req.params.id);
       file.jwt = 'jwt-updated';
+      if (!file) {
+        return res.status(404).json({
+          message: `file not found for id [${req.params.id}]`,
+        });
+      }
     }
     if (!file) {
       file = new File();
@@ -39,7 +44,6 @@ exports.save = async (req, res) => {
     file.path = req.body.path;
     let data = await file.save();
     res.status(201).json({ data });
-    throw new Error('test');
   } catch (err) {
     res.status(400).json({ err });
   }

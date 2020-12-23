@@ -29,22 +29,22 @@ export default {
   beforeRouteEnter(route, redirect, next) {
     if (!route.params.id) {
       next(
-        (vm) =>
+        vm =>
           (vm.file = {
-            id: null,
             name: '',
             path: '',
           })
       );
     } else {
       fileService
-      .fetchOne(route.params.id)
-      .then((res) => {
-        next((vm) => {
-          vm.file = res.data;
-          vm.title = res.data.name;
-        });
-      });
+        .fetchOne(route.params.id)
+        .then(res => {
+          next(vm => {
+            vm.file = res.data;
+            vm.title = res.data.name;
+          });
+        })
+        .catch(console.error);
     }
   },
   computed: {
