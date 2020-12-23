@@ -1,18 +1,13 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <router-link to="/" class="no-decoration">
-        <app-title size="small"></app-title>
-      </router-link>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <button class="nav-link btn btn-link" @click="logUserOut">Logout</button>
-          </li>
-        </ul>
+      <app-title size="small"></app-title>
+      <div class="justify-content-end">
+        <nav class="nav navbar-nav">
+          <router-link v-for="(menu, index) in menus" :key="index" :class="{ 'nav-link': true, active: menu.to === currentPath }" :to="menu.to">{{ menu.label }}</router-link>
+          <div class="nav-divider"></div>
+          <button class="nav-link btn btn-link" @click="logUserOut">Logout</button>
+        </nav>
       </div>
     </div>
   </nav>
@@ -25,17 +20,39 @@ export default {
   components: {
     'app-title': AppTitle,
   },
+  data() {
+    return {
+      currentPath: '/',
+      menus: [
+        {
+          label: 'Home',
+          to: '/',
+        },
+        {
+          label: 'Users',
+          to: '/users',
+        },
+        {
+          label: 'Register',
+          to: '/register',
+        },
+        {
+          label: 'Files',
+          to: '/files',
+        },
+      ]
+    }
+  },
   methods: {
     logUserOut() {
       localStorage.removeItem('jwt');
       this.$router.push({ name: 'login' });
     },
   },
+  watch: {
+    $route(to) {
+      this.currentPath = to.path;
+    },
+  },
 };
 </script>
-
-<style scoped lang="scss">
-.no-decoration {
-  text-decoration: none;
-}
-</style>

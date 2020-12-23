@@ -2,7 +2,7 @@
   <div>
     <navbar></navbar>
     <section>
-      <div class="container mt-5">
+      <div class="container mt-5 mb-5">
         <router-view></router-view>
       </div>
     </section>

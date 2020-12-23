@@ -1,0 +1,19 @@
+
+body.app-center {
+  background-color: rgba(black, 0.1);
+}
+
+.nav {
+  .nav-divider {
+    border-left: 1px solid rgba($white, 0.5);
+    margin: 0.6rem 0.8rem;
+  }
+}
+
+.border-actions {
+  border-color: $gray-400 !important;
+}
+
+.border-title {
+  border-color: $gray-800 !important;
+}

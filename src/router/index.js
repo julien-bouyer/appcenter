@@ -32,6 +32,13 @@ const routes = [
           requiresAuth: true,
         },
       },
+      {
+        path: 'home',
+        redirect: '/',
+        meta: {
+          requiresAuth: true,
+        },
+      },
       ...userRouter,
       ...fileRouter,
     ],

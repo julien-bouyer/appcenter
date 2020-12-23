@@ -4,8 +4,8 @@
     <form @submit.prevent="save">
       <input-text label="Name" required v-model="file.name"></input-text>
       <input-text label="Path" required v-model="file.path"></input-text>
-      <div>
-        <button type="submit" class="btn btn-primary">Save</button>
+      <div class="mt-4 pt-4 border-top border-actions">
+        <button type="submit" class="btn btn-primary mr-2">Save</button>
         <button type="button" @click="goList" class="btn btn-outline-primary">Back</button>
       </div>
     </form>
