@@ -58,6 +58,25 @@ docker run --name mongodock -p 27017:27017 -i -t -d mongo
 http://pierrepironin.github.io/docker-et-mongodb/
 https://hub.docker.com/_/mongo/
 
+### Requête
+
+```
+# use a database
+use appcenter
+
+# list collections
+db.getCollectionNames()
+
+# select one
+db.users.findOne({name:'Julien'})
+
+# select all
+db.users.find().pretty()
+
+# update
+db.users.updateOne({"name": "Test"}, {$set: {"email": "test@mail.fr"}})
+```
+
 ## Couleurs 
 
 bleu foncé : #24478f
