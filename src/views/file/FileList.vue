@@ -30,7 +30,7 @@
               <td>{{ file.jwt }}</td>
               <td>{{ file.secret }}</td>
               <td>{{ file.scope }}</td>
-              <td>
+              <td class="p-1">
                 <router-link :to="{name:'FileForm', params: {id: file._id}}" class="btn btn-link">Edit</router-link>
                 <button class="btn btn-link" @click="remove(file._id)">Delete</button>
               </td>

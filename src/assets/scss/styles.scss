@@ -1,28 +1,11 @@
 /*
 Décalaration des styles applicables à l'ensemble de l'application.
 */
+// Bootstrap
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 
 // fonts
-@import '@/assets/fonts/Teko/teko.scss';
+@import '@/assets/fonts/Teko/teko';
 
-// colors
 @import 'colors';
-
-// variables
-@import 'variables';
-
-// content
-@import 'buttons';
-@import 'forms';
-
-body.app-center {
-  background-color: rgb(0 0 0 / 0.1);
-  margin: 0;
-  padding: 0;
-
-  #app {
-    a {
-      color: #24478f;
-    }
-  }
-}
+@import 'appcenter';
