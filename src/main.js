@@ -4,7 +4,6 @@ import router from '@/router';
 import store from '@/store';
 import axios from 'axios';
 import UUID from 'vue-uuid';
-import 'bootstrap/dist/css/bootstrap.css';
 
 const base = axios.create({
   baseURL: 'http://localhost:4000/api',
