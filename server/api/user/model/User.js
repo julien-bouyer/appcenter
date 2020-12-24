@@ -14,6 +14,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: [true, 'Please Include your password'],
   },
+  role: {
+    type: String,
+    required: [true, 'Please Include your role'],
+  },
   tokens: [
     {
       token: {
