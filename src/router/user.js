@@ -8,6 +8,7 @@ const userRouter = [
     component: UserList,
     meta: {
       requiresAuth: true,
+      menu: 'users',
     },
   },
   {
@@ -16,6 +17,7 @@ const userRouter = [
     component: UserForm,
     meta: {
       requiresAuth: true,
+      menu: 'users',
     },
   },
 ];

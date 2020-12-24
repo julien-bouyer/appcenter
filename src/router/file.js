@@ -8,6 +8,7 @@ const fileRouter = [
     component: FileList,
     meta: {
       requiresAuth: true,
+      menu: 'files',
     },
   },
   {
@@ -16,6 +17,7 @@ const fileRouter = [
     component: FileForm,
     meta: {
       requiresAuth: true,
+      menu: 'files',
     },
   }
 ];

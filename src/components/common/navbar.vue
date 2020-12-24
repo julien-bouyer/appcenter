@@ -4,7 +4,7 @@
       <app-title size="small"></app-title>
       <div class="justify-content-end">
         <nav class="nav navbar-nav">
-          <router-link v-for="(menu, index) in menus" :key="index" :class="{ 'nav-link': true, active: menu.to === currentPath }" :to="menu.to">{{ menu.label }}</router-link>
+          <router-link v-for="(menu, index) in menus" :key="index" :class="{ 'nav-link': true, active: menu.name === currentMenu }" :to="menu.to">{{ menu.label }}</router-link>
           <div class="nav-divider"></div>
           <button class="nav-link btn btn-link" @click="logUserOut">Logout</button>
         </nav>
@@ -22,26 +22,28 @@ export default {
   },
   data() {
     return {
-      currentPath: '/',
+      currentMenu: '/',
       menus: [
         {
+          name: 'home',
           label: 'Home',
-          to: '/',
+          to: '/home',
         },
         {
+          name: 'users',
           label: 'Users',
           to: '/users',
         },
         {
-          label: 'Register',
-          to: '/register',
-        },
-        {
+          name: 'files',
           label: 'Files',
           to: '/files',
         },
-      ]
-    }
+      ],
+    };
+  },
+  created() {
+    this.currentMenu = this.$route.meta.menu;
   },
   methods: {
     logUserOut() {
@@ -51,7 +53,8 @@ export default {
   },
   watch: {
     $route(to) {
-      this.currentPath = to.path;
+      console.log(to.meta.menu);
+      this.currentMenu = to.meta.menu;
     },
   },
 };

@@ -30,6 +30,7 @@ const routes = [
         component: Home,
         meta: {
           requiresAuth: true,
+          menu: 'home',
         },
       },
       {
@@ -37,6 +38,7 @@ const routes = [
         redirect: '/',
         meta: {
           requiresAuth: true,
+          menu: 'home',
         },
       },
       ...userRouter,
