@@ -53,7 +53,6 @@ export default {
   },
   watch: {
     $route(to) {
-      console.log(to.meta.menu);
       this.currentMenu = to.meta.menu;
     },
   },

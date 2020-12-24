@@ -38,7 +38,6 @@ exports.save = async (req, res) => {
       file.url = 'https://there.com/f/jwtgenerated/';
       file.jwt = 'jwt-generated';
       file.secret = 'my-secret';
-      file.scope = 'ADMIN';
     }
     file.name = req.body.name;
     file.path = req.body.path;
@@ -50,7 +49,6 @@ exports.save = async (req, res) => {
 };
 
 exports.delete = async (req, res) => {
-  console.log('delete', req.params);
   try {
     let data = await File.deleteOne({ _id: req.params.id });
     res.status(201).json({ data });

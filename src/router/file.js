@@ -19,7 +19,7 @@ const fileRouter = [
       requiresAuth: true,
       menu: 'files',
     },
-  }
+  },
 ];
 
 export default fileRouter;

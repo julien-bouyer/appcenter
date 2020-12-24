@@ -17,7 +17,6 @@
               <th scope="col">URL</th>
               <th scope="col">JWT</th>
               <th scope="col">Secret</th>
-              <th scope="col">Scope</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -29,7 +28,6 @@
               <td>{{ file.url }}</td>
               <td>{{ file.jwt }}</td>
               <td>{{ file.secret }}</td>
-              <td>{{ file.scope }}</td>
               <td class="p-1">
                 <router-link :to="{ name: 'FileForm', params: { id: file._id } }" class="btn btn-link">Edit</router-link>
                 <button class="btn btn-link" @click="remove(file._id)">Delete</button>
