@@ -14,6 +14,7 @@
               <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
+              <th scope="col">Role</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -22,6 +23,7 @@
               <th scope="row">{{ index + 1 }}</th>
               <td>{{ user.name }}</td>
               <td>{{ user.email }}</td>
+              <td>{{ getRole(user.role) }}</td>
               <td class="p-1">
                 <router-link :to="{ name: 'UserForm', params: { id: user._id } }" class="btn btn-link">Edit</router-link>
                 <!-- <button class="btn btn-link" @click="remove(user._id)">Delete</button> -->
@@ -37,14 +39,12 @@
 
 <script>
 import userService from '@/services/user.service.js';
+import roleService from '@/services/role.service.js';
 import { mapGetters } from 'vuex';
 
 export default {
-  data() {
-    return {};
-  },
   beforeRouteEnter(route, redirect, next) {
-    next((vm) => vm.$store.dispatch('users/fetch'));
+    next(vm => vm.$store.dispatch('users/fetch'));
   },
   computed: {
     ...mapGetters('users', {
@@ -66,6 +66,9 @@ export default {
     },
     refresh() {
       this.$store.dispatch('users/fetch');
+    },
+    getRole(role) {
+      return roleService.getRole(role);
     },
   },
 };

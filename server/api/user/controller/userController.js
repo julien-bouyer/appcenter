@@ -44,6 +44,7 @@ exports.save = async (req, res) => {
     }
     user.name = req.body.name;
     user.email = req.body.email;
+    user.role = req.body.role;
     if (req.body.password) {
       user.password = req.body.password;
     }
