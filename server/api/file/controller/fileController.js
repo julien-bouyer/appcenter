@@ -28,9 +28,7 @@ exports.save = async (req, res) => {
       file = await File.findById(req.params.id);
       file.jwt = 'jwt-updated';
       if (!file) {
-        return res.status(404).json({
-          message: `file not found for id [${req.params.id}]`,
-        });
+        return res.status(404).json({ message: `File not found for id [${req.params.id}]` });
       }
     }
     if (!file) {
@@ -52,6 +50,20 @@ exports.delete = async (req, res) => {
   try {
     let data = await File.deleteOne({ _id: req.params.id });
     res.status(201).json({ data });
+  } catch (err) {
+    res.status(400).json({ err });
+  }
+};
+
+exports.publish = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const file = await File.findById(id);
+    if (!file) {
+      return res.status(404).json({ error: `File not found for id [${id}]` });
+    }
+    const generatedJwt = await file.generateJwt();
+    res.status(200).json({ file, generatedJwt });
   } catch (err) {
     res.status(400).json({ err });
   }

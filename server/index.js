@@ -34,8 +34,8 @@ app.get('/', () => {
   console.log('Hello MEVN Soldier');
 });
 
-const userRoutes = require('./api/user/route/user'); //bring in our user routes
-const fileRoutes = require('./api/file/route/file'); //bring in our user routes
+const userRoutes = require('./api/user/route/user');
+const fileRoutes = require('./api/file/route/file');
 app.use('/api/user', userRoutes);
 app.use('/api/file', fileRoutes);
 
