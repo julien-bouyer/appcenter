@@ -1,44 +1,31 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const utf8 = require('utf8');
 
 const fileSchema = mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Please include a file name'],
-  },
-  path: {
-    type: String,
-    required: [true, 'Please include a file path'],
-  },
-  url: {
-    type: String,
-    required: true,
-  },
-  jwt: {
-    type: String,
-    required: true,
+    required: [true, 'Please include a name'],
   },
   secret: {
     type: String,
-    required: true,
+    required: [true, 'Please include a secret'],
+  },
+  url: {
+    type: String,
+  },
+  jwt: {
+    type: String,
   },
 });
 
-fileSchema.methods.generateJwt = async () => {
+fileSchema.methods.generateJwt = async function() {
   const file = this;
-  const generatedJwt = jwt.sign({ _id: file._id, name: file.name }, file.secret, { issuer: 'appcenter', expiresIn: '7 days' });
-  file.jwt = generatedJwt;
+  const generatedJwt = jwt.sign({ id: file._id }, file.secret, { issuer: 'appcenter', expiresIn: '7 days' });
+  file.jwt = utf8.encode(generatedJwt);
+  file.url = `${process.env.SERVER_URI}/download/${file.jwt}`;
   await file.save();
   return generatedJwt;
-};
-
-fileSchema.statics.verifyJwt = async (token, secret) => {
-  const file = this.findOne({ jwt: token });
-  if (!file) {
-    return false;
-  }
-  const decoded = jwt.verify(token, secret);
-  console.log(decoded);
 };
 
 const File = mongoose.model('File', fileSchema);

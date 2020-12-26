@@ -77,6 +77,8 @@ db.users.find().pretty()
 db.users.updateOne({"name": "Test"}, {$set: {"email": "test@mail.fr"}})
 ```
 
+https://geekflare.com/fr/mongodb-queries-examples/
+
 ## Couleurs 
 
 bleu foncé : #24478f

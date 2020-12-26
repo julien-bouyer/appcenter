@@ -8,15 +8,13 @@
         </div>
       </div>
       <div class="col-md-12">
-        <table class="table">
+        <table class="table files-list">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
-              <th scope="col">Path</th>
-              <th scope="col">URL</th>
-              <th scope="col">JWT</th>
               <th scope="col">Secret</th>
+              <th scope="col">URL</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -24,12 +22,13 @@
             <tr :key="file._id" v-for="(file, index) in files">
               <th scope="row">{{ index + 1 }}</th>
               <td>{{ file.name }}</td>
-              <td>{{ file.path }}</td>
-              <td>{{ file.url }}</td>
-              <td>{{ file.jwt }}</td>
               <td>{{ file.secret }}</td>
+              <td>
+                <span class="truncate">{{ file.url }}</span>
+              </td>
               <td class="p-1">
                 <router-link :to="{ name: 'FileForm', params: { id: file._id } }" class="btn btn-link">Edit</router-link>
+                <button class="btn btn-link" @click="publish(file._id)">Publish</button>
                 <button class="btn btn-link" @click="remove(file._id)">Delete</button>
               </td>
             </tr>
@@ -57,6 +56,12 @@ export default {
     }),
   },
   methods: {
+    publish(id) {
+      fileService
+        .publish(id)
+        .then(() => this.refresh())
+        .catch(console.error);
+    },
     remove(id) {
       fileService
         .remove(id)

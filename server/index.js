@@ -1,4 +1,6 @@
 const express = require('express');
+const dotenv = require('dotenv');
+dotenv.config();
 const PORT = process.env.PORT || 4000;
 const morgan = require('morgan');
 const cors = require('cors');
@@ -14,8 +16,8 @@ mongoose
   .then(() => {
     console.log('Database is connected');
   })
-  .catch((err) => {
-    console.log({ database_error: err });
+  .catch(error => {
+    console.log({ database_error: error });
   });
 
 // db configuaration ends here
@@ -27,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //configure body-parser ends here
-app.use(morgan('dev')); // configire morgan
+app.use(morgan('dev')); // configure morgan
 
 // define first route
 app.get('/', () => {
@@ -36,8 +38,10 @@ app.get('/', () => {
 
 const userRoutes = require('./api/user/route/user');
 const fileRoutes = require('./api/file/route/file');
+const downloadRoutes = require('./api/download/route/download');
 app.use('/api/user', userRoutes);
 app.use('/api/file', fileRoutes);
+app.use('/d', downloadRoutes);
 
 app.listen(PORT, () => {
   console.log(`App is running on ${PORT}`);
