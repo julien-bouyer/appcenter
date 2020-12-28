@@ -1,4 +1,4 @@
 module.exports = {
-  database: 'mongodb://localhost:27017/appcenter',
-  secret: 'password',
+  database: `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+  secret: process.env.DB_SECRET,
 };

@@ -1,6 +1,10 @@
-
 body.app-center {
   background-color: rgba(black, 0.1);
+}
+
+.card {
+  margin: 0 auto;
+  width: 40rem;
 }
 
 .nav {
@@ -16,4 +20,17 @@ body.app-center {
 
 .border-title {
   border-color: $gray-800 !important;
+}
+
+.truncate {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.files-list {
+  .truncate {
+    width: 20em;
+  }
 }

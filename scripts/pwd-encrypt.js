@@ -5,8 +5,8 @@ const encrypt = (password) => {
     try {
       const pwd = bcrypt.hash(password, 8);
       resolve(pwd);
-    } catch (err) {
-      reject(err);
+    } catch (error) {
+      reject(error);
     }
   });
 };

@@ -14,8 +14,8 @@ exports.find = async (req, res) => {
       return res.status(401).json({ error: 'User not found' });
     }
     res.status(201).json({ data });
-  } catch (err) {
-    res.status(400).json({ err });
+  } catch (error) {
+    res.status(400).json(error);
   }
 };
 
@@ -48,8 +48,8 @@ exports.save = async (req, res) => {
     }
     let data = await user.save();
     res.status(201).json({ data });
-  } catch (err) {
-    res.status(400).json({ err });
+  } catch (error) {
+    res.status(400).json(error);
   }
 };
 
@@ -63,7 +63,7 @@ exports.loginUser = async (req, res) => {
     }
     const token = await user.generateAuthToken();
     res.status(201).json({ user, token });
-  } catch (err) {
-    res.status(400).json({ err });
+  } catch (error) {
+    res.status(400).json(error);
   }
 };

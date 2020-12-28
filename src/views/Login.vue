@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="container pt-5">
     <form @submit.prevent="loginUser">
       <div class="card">
-        <div class="card-header bg-dark">
+        <div class="p-3 bg-dark">
           <app-title></app-title>
         </div>
         <div class="card-body">
@@ -23,9 +23,9 @@ import AppTitle from '@/components/common/app-title.vue';
 
 export default {
   components: {
-    'input-email': InputEmail,
-    'input-password': InputPassword,
-    'app-title': AppTitle,
+    InputEmail,
+    InputPassword,
+    AppTitle,
   },
   data() {
     return {
@@ -38,31 +38,16 @@ export default {
   methods: {
     async loginUser() {
       try {
-        let response = await this.$http.post('/user/login', this.login);
+        let response = await this.$http.post('/api/user/login', this.login);
         let token = response.data.token;
         localStorage.setItem('jwt', token);
         if (token) {
           this.$router.push({ name: 'home' });
         }
-      } catch (err) {
+      } catch (error) {
         swal('Error', 'Something Went Wrong', 'error');
       }
     },
   },
 };
 </script>
-
-<style scoped lang="scss">
-.container {
-  padding: 3rem;
-}
-
-.card {
-  margin: 0 auto;
-  width: 40rem;
-
-  .card-header {
-    padding: 1.25rem;
-  }
-}
-</style>

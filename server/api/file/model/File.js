@@ -1,29 +1,35 @@
 const mongoose = require('mongoose');
-// const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
+const utf8 = require('utf8');
 
 const fileSchema = mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Please include a file name'],
+    required: [true, 'Please include a name'],
   },
-  path: {
+  filename: {
     type: String,
-    required: [true, 'Please include a file path'],
-  },
-  url: {
-    type: String,
-    required: true,
-  },
-  jwt: {
-    type: String,
-    required: true,
+    required: [true, 'Please include a filename'],
   },
   secret: {
     type: String,
-    required: true,
+    required: [true, 'Please include a secret'],
+  },
+  url: {
+    type: String,
+  },
+  jwt: {
+    type: String,
   },
 });
+
+fileSchema.methods.generateJwt = async function() {
+  const file = this;
+  file.jwt = jwt.sign({ name: file.name }, file.secret, { issuer: 'appcenter', expiresIn: '7 days' });
+  file.url = `${process.env.FRONTAPP_URI}/download/${utf8.encode(file.jwt)}`;
+  await file.save();
+  return file;
+};
 
 const File = mongoose.model('File', fileSchema);
 module.exports = File;

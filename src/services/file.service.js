@@ -38,11 +38,18 @@ export default {
         throw error;
       });
   },
+  async publish(id) {
+    return HTTP.put(`/file/publish/${id}`)
+      .then(response => response.data)
+      .catch(error => {
+        throw error;
+      });
+  },
   async remove(id) {
     return HTTP.delete(`/file/${id}`)
       .then(response => response.data)
       .catch(error => {
         throw error;
       });
-  }
+  },
 };

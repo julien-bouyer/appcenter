@@ -6,7 +6,7 @@ import axios from 'axios';
 import UUID from 'vue-uuid';
 
 const base = axios.create({
-  baseURL: 'http://localhost:4000/api',
+  baseURL: 'http://localhost:4000',
 });
  
 Vue.prototype.$http = base;

@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '@/views/Home.vue';
+import Home from '@/views/home/Home.vue';
 
 import userRouter from '@/router/user.js';
 import fileRouter from '@/router/file.js';
 
 const Login = () => import('@/views/Login.vue');
+const Download = () => import('@/views/download/Download.vue');
 const AdminContainer = () => import('@/views/AdminContainer.vue');
 
 Vue.use(VueRouter);
@@ -15,6 +16,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login,
+  },
+  {
+    path: '/download/:token',
+    name: 'download',
+    component: Download,
   },
   {
     path: '/',
