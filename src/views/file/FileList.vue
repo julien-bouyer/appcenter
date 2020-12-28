@@ -13,6 +13,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
+              <th scope="col">Filename</th>
               <th scope="col">Secret</th>
               <th scope="col">URL</th>
               <th scope="col">Actions</th>
@@ -22,6 +23,7 @@
             <tr :key="file._id" v-for="(file, index) in files">
               <th scope="row">{{ index + 1 }}</th>
               <td>{{ file.name }}</td>
+              <td>{{ file.filename }}</td>
               <td>{{ file.secret }}</td>
               <td>
                 <span class="truncate">{{ file.url }}</span>

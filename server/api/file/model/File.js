@@ -7,6 +7,10 @@ const fileSchema = mongoose.Schema({
     type: String,
     required: [true, 'Please include a name'],
   },
+  filename: {
+    type: String,
+    required: [true, 'Please include a filename'],
+  },
   secret: {
     type: String,
     required: [true, 'Please include a secret'],
@@ -21,11 +25,10 @@ const fileSchema = mongoose.Schema({
 
 fileSchema.methods.generateJwt = async function() {
   const file = this;
-  const generatedJwt = jwt.sign({ id: file._id }, file.secret, { issuer: 'appcenter', expiresIn: '7 days' });
-  file.jwt = utf8.encode(generatedJwt);
-  file.url = `${process.env.SERVER_URI}/download/${file.jwt}`;
+  file.jwt = jwt.sign({ name: file.name }, file.secret, { issuer: 'appcenter', expiresIn: '7 days' });
+  file.url = `${process.env.FRONTAPP_URI}/download/${utf8.encode(file.jwt)}`;
   await file.save();
-  return generatedJwt;
+  return file;
 };
 
 const File = mongoose.model('File', fileSchema);

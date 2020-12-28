@@ -18,7 +18,7 @@ const routes = [
     component: Login,
   },
   {
-    path: '/download/:file',
+    path: '/download/:token',
     name: 'download',
     component: Download,
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label :for="uuid">{{ label }}<span v-if="required"> (*)</span></label>
-    <input class="form-control" :type="type" :id="uuid" :placeholder="placeholder" :value="value" v-on:input="$emit('input', $event.target.value)" :autocomplete="autocomplete" />
+    <input :name="name" class="form-control" :type="type" :id="uuid" :placeholder="placeholder" :value="value" v-on:input="$emit('input', $event.target.value)" :autocomplete="autocomplete" />
   </div>
 </template>
 
@@ -14,6 +14,7 @@ export default {
     };
   },
   props: {
+    name: String,
     type: {
       default: 'text',
     },

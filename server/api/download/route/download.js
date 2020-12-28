@@ -1,7 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const router = express.Router();
 const fileController = require('../../file/controller/fileController');
 
-router.post('/f/:token', fileController.download);
+router.get(
+  '/f/:token',
+  cors({
+    exposedHeaders: ['Content-Disposition', 'Content-Type', 'Content-Length'],
+  }),
+  fileController.download
+);
 
 module.exports = router;

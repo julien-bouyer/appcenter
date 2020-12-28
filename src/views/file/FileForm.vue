@@ -3,8 +3,11 @@
     <h2>{{ mode }} file {{ title }}</h2>
     <form @submit.prevent="save">
       <input-text label="Name" required v-model="file.name"></input-text>
+      <input-text label="Filename" required v-model="file.filename"></input-text>
       <input-text label="Secret" required v-model="file.secret"></input-text>
-      <div v-if="file.url" class="mt-4 pt-4 border-top border-actions text-break">{{file.url}}</div>
+      <div v-if="file.url" class="mt-4 pt-4 border-top border-actions text-break">
+        <a :href="file.url" _target="blank">{{file.url}}</a>
+        </div>
       <div class="mt-4 pt-4 border-top border-actions">
         <button type="submit" class="btn btn-primary mr-2">Save</button>
         <button type="button" @click="goList" class="btn btn-outline-primary">Back</button>
@@ -33,6 +36,7 @@ export default {
         vm =>
           (vm.file = {
             name: '',
+            filename: '',
             secret: '',
             url: ''
           })
