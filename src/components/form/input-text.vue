@@ -1,6 +1,6 @@
 <template>
   <div class="form-group">
-    <label :for="uuid">{{ label }}<span v-if="required"> (*)</span></label>
+    <label v-if="label" :for="uuid">{{ label }}<span v-if="required"> (*)</span></label>
     <input :name="name" class="form-control" :type="type" :id="uuid" :placeholder="placeholder" :value="value" v-on:input="$emit('input', $event.target.value)" :autocomplete="autocomplete" />
   </div>
 </template>

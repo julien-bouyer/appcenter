@@ -1,17 +1,17 @@
 <template>
   <div class="container pt-5">
-    <form method="get" :action="url">
-      <div class="card">
-        <div class="p-3 bg-dark">
-          <app-title></app-title>
-        </div>
-        <div class="card-body">
-          <div>Download : {{ file.name }}</div>
-          <input-text name="secret" label="Secret" v-model="secret"></input-text>
-          <button type="submit" class="btn btn-primary">Download</button>
-        </div>
+    <div class="card">
+      <div class="p-3 bg-dark">
+        <app-title></app-title>
       </div>
-    </form>
+      <div class="card-body">
+        <h3 class="mb-4">{{ file.name }}</h3>
+        <form method="get" :action="url">
+          <input-text name="secret" placeholder="Enter the secret" v-model="secret"></input-text>
+          <button type="submit" class="btn btn-primary mt-2" :disabled="!secret">Download</button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -43,5 +43,5 @@ export default {
       vm.url = `${host}/d/f/${vm.token}`;
     });
   },
-}; 
+};
 </script>
