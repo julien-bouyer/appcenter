@@ -90,6 +90,12 @@ Encrypt password
 node ./scripts/pwd-encrypt.js <list of passwords separate by spaces>
 ```
 
+## Build
+
+```
+docker build -t appnode . 
+```
+
 ## Couleurs 
 
 bleu foncé : #24478f

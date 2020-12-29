@@ -26,7 +26,7 @@ const fileSchema = mongoose.Schema({
 fileSchema.methods.generateJwt = async function() {
   const file = this;
   file.jwt = jwt.sign({ name: file.name }, file.secret, { issuer: 'appcenter', expiresIn: '7 days' });
-  file.url = `${process.env.FRONTAPP_URI}/download/${utf8.encode(file.jwt)}`;
+  file.url = `${process.env.FRONTAPP_URI}/#/download/${utf8.encode(file.jwt)}`;
   await file.save();
   return file;
 };

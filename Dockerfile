@@ -14,6 +14,7 @@ RUN npm install
 
 # Bundle app source
 COPY ./server/. /usr/src/app
+COPY ./dist/. /usr/src/app/public
 
 EXPOSE 4000
 CMD [ "node", "index.js" ]

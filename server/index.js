@@ -4,9 +4,11 @@ dotenv.config();
 const PORT = process.env.PORT || 4000;
 const morgan = require('morgan');
 const cors = require('cors');
+// const history = require('connect-history-api-fallback');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config/db');
+const path = require('path');
 const app = express();
 
 // load the banner
@@ -55,12 +57,12 @@ app.use(bodyParser.json());
 // configure body-parser ends here
 app.use(morgan('dev')); // configure morgan
 
-// define first route
-app.get('/', (req, res) => {
-  console.warn('[APPCENTER] Access on root');
-  console.warn(req.headers);
-  res.end();
-});
+// app.use(
+//   history({
+//     verbose: true,
+//   })
+// );
+app.use('/', express.static(path.join(__dirname, 'public')));
 
 // routes
 const userRoutes = require('./api/user/route/user');
