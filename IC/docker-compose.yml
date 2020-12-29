@@ -1,0 +1,13 @@
+version: '3'
+services: 
+  database:
+    image: 'mongo'
+    container_name: 'appcenter-mongodb'
+    environment: 
+      - MONGO_INITDB_DATABASE=appcenter
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PWD}
+    volumes: 
+      - ${MONGODB_VOLUME}:/data/db
+    ports: 
+      - '27017-27019:27017-27019'

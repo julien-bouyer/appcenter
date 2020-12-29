@@ -16,7 +16,14 @@ require('./config/banner');
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 mongoose
-  .connect(config.database, { useNewUrlParser: true })
+  .connect(config.database, {
+    auth: {
+      authSource: 'admin',
+    },
+    user: config.user,
+    pass: config.password,
+    useNewUrlParser: true,
+  })
   .then(() => {
     console.log('** Database is connected');
   })
