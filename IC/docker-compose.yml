@@ -11,20 +11,20 @@ services:
       - ${MONGODB_VOLUME}:/data/db
     ports: 
       - '27017-27019:27017-27019'
-  node:
-    image: appnode
-    container_name: 'appcenter-node'
-    environment:
-      - STORAGE_DIR=/var/www/storage/
-      - AUTH_SECRET=${AUTH_SECRET}
-      - FRONTAPP_URI=${FRONTAPP_URI}
-      - MONGODB_HOST=${MONGODB_HOST}
-      - MONGODB_PORT=${MONGODB_PORT}
-      - MONGODB_NAME=${MONGODB_NAME}
-      - MONGODB_USER=${MONGODB_USER}
-      - MONGODB_PASSWORD=${MONGODB_PASSWORD}
-    volumes:
-      - ${STORAGE_DIR}:/var/www/storage/
-    ports:
-      - "4000:4000"
+  # node:
+  #   image: appnode:1.0
+  #   container_name: 'appcenter-node'
+  #   environment:
+  #     - STORAGE_DIR=/var/www/storage/
+  #     - AUTH_SECRET=${AUTH_SECRET}
+  #     - FRONTAPP_URI=${FRONTAPP_URI}
+  #     - MONGODB_HOST=${MONGODB_HOST}
+  #     - MONGODB_PORT=${MONGODB_PORT}
+  #     - MONGODB_NAME=${MONGODB_NAME}
+  #     - MONGODB_USER=${MONGODB_USER}
+  #     - MONGODB_PASSWORD=${MONGODB_PASSWORD}
+  #   volumes:
+  #     - ${STORAGE_DIR}:/var/www/storage/
+  #   ports:
+  #     - "4000:4000"
     
