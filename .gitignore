@@ -26,4 +26,5 @@ pnpm-debug.log*
 *.sw?
 
 # appcenter
+/data
 /storage

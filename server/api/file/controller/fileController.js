@@ -98,6 +98,7 @@ exports.download = async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(400).json(error);
+    console.error(error);
+    res.status(400).json({ message: 'Could not download the file.' });
   }
 };

@@ -73,11 +73,28 @@ db.users.findOne({name:'Julien'})
 # select all
 db.users.find().pretty()
 
+# insert one
+db.users.insertOne({"name":"julien", "email":"julien@mail.fr", "password": "$2b$08$7Mcj8pKoth.StQgLllPcmuoLg0HxduZUzrl2Otkb.UMDkSwhveUte", "role": "ADMIN"});
+
 # update
-db.users.updateOne({"name": "Test"}, {$set: {"email": "test@mail.fr"}})
+db.users.updateOne({"name": "julien"}, {$set: {"password": "$2b$08$3U3H1IqyYYlZicmFMeBeNe1ounRN4PN24SnckrTFvXyVHuH/xqhxi"}})
 ```
 
 https://geekflare.com/fr/mongodb-queries-examples/
+
+## Scripts
+
+Encrypt password
+
+```
+node ./scripts/pwd-encrypt.js <list of passwords separate by spaces>
+```
+
+## Build
+
+```
+docker build -t appnode . 
+```
 
 ## Couleurs 
 
